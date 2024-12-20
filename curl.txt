@@ -1,0 +1,24 @@
+curl -X POST http://localhost:8080/api/v1/user/create \
+-H "Content-Type: application/json" \
+-d '{
+  "firstName": "John",
+  "lastName": "Denis",
+  "username": "johndenis23",
+  "email": "johndenis23@gmail.com",
+  "state": "Arizona",
+  "role": "patron"
+}'
+
+
+
+curl -X PATCH http://localhost:8080/api/v1/user/update/676559390f61f32ea2a45094 \
+-H "Content-Type: application/json" \
+-d '{
+  "firstName": "John"
+}'
+
+
+curl -X DELETE http://localhost:8080/api/v1/user/delete/676559390f61f32ea2a45094
+
+
+curl -X GET http://localhost:8080/api/v1/user/all/business
