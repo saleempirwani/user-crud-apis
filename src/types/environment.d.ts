@@ -2,24 +2,23 @@ declare global {
   namespace NodeJS {
     interface ProcessEnv {
       NODE_ENV: "local" | "dev" | "prod";
-      ACCESS_TOKEN_SECRET: string;
-      REGION: string;
-      S3_BUCKET: string;
-      ACCESS_KEY_ID: string;
-      SECRET_ACCESS_KEY: string;
       MONGODB_URL: string;
-      THE_NEXT_LEG_API_KEY: string;
-      CRYPTO_SECRET: string;
-      ACCESS_TOKEN_SECRET: string;
-      VERIFY_TOKEN_SECRET: string;
-      WEB_BASE_URL: string;
-      BCRYPT_ROUNDS: number;
-      OTP_SECRET: string;
-      NODEMAILER_USER: string;
-      NODEMAILER_PWD: string;
-      CLOUDINARY_NAME: string;
-      CLOUDINARY_API_KEY: string;
-      CLOUDINARY_API_SECRET: string;
+      // ACCESS_TOKEN_SECRET: string;
+      // REGION: string;
+      // S3_BUCKET: string;
+      // ACCESS_KEY_ID: string;
+      // SECRET_ACCESS_KEY: string;
+      // CRYPTO_SECRET: string;
+      // ACCESS_TOKEN_SECRET: string;
+      // VERIFY_TOKEN_SECRET: string;
+      // WEB_BASE_URL: string;
+      // BCRYPT_ROUNDS: number;
+      // OTP_SECRET: string;
+      // NODEMAILER_USER: string;
+      // NODEMAILER_PWD: string;
+      // CLOUDINARY_NAME: string;
+      // CLOUDINARY_API_KEY: string;
+      // CLOUDINARY_API_SECRET: string;
     }
   }
 }

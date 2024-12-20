@@ -1,5 +1,5 @@
 {
-  "name": "zella-backend",
+  "name": "user-crud-apis",
   "version": "1.0.0",
   "description": "",
   "main": "dist/app.js",

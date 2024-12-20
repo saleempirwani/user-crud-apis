@@ -73,7 +73,7 @@ export const removeUser = async (
   }
 };
 
-export const getAllUsersRole = async (
+export const getAllUsersByRole = async (
   req: express.Request,
   res: express.Response
 ) => {
