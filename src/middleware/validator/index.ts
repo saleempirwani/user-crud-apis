@@ -1,7 +1,7 @@
 import express from "express";
+import { ZodSchema } from "zod";
 import { ERRORS } from "../../messages/errors";
 import { STATUS } from "../../messages/status-codes";
-import { ZodSchema } from "zod";
 import { getErrorMsg } from "../../utils/error";
 
 export const validateDto = (schema: ZodSchema) => {
@@ -13,11 +13,7 @@ export const validateDto = (schema: ZodSchema) => {
     console.log(req.body);
 
     try {
-      if (
-        !Object.keys(req.body).length &&
-        !Object.keys(req.files || {})?.length &&
-        !req.file
-      ) {
+      if (!Object.keys(req.body).length) {
         throw new Error(ERRORS.proReqFields);
       }
 

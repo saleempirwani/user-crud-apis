@@ -16,7 +16,7 @@ app.set("view engine", "ejs");
 const server = createServer(app);
 
 app.get("/", async (req: Request, res: Response) => {
-  res.status(200).send({ message: "Welcome to Zella backend APIs." });
+  res.status(200).send({ message: "Welcome User Crud APIs." });
 });
 
 app.use((req, res, next) => {
