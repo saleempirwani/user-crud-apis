@@ -78,4 +78,7 @@ export type ValidationError =
   | "must be future date"
   | "must be an array of numbers"
   | "must contain exactly two values (latitude and longitude)"
-  | "must be a valid";
+  | "must be a valid"
+  | "min. limit is 2"
+  | "only contains alphanumeric characters"
+  | "max. limit is 20";

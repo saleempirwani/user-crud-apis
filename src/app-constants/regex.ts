@@ -20,6 +20,7 @@ export const REGEX = {
     /^-?(180(\.0+)?|(1[0-7][0-9](\.[0-9]+)?)|([0-9]?[0-9](\.[0-9]+)?))$/,
   text: /^[A-Za-z]+$/,
   objectId: /^[a-fA-F0-9]{24}$/, // MongoDB ObjectId format
+  alphanumeric: /^[a-zA-Z0-9 ]+$/,
 };
 
 export const checkRegex = (regex: keyof typeof REGEX, text: string) => {

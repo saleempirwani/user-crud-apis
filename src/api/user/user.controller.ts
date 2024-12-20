@@ -1,6 +1,6 @@
 import express from "express";
 import { validateDto } from "../../middleware/validator";
-import { updateUserDto } from "./user.dto";
+import { createUserDto, updateUserDto } from "./user.dto";
 import {
   createUser,
   getAllUsersByRole,
@@ -11,9 +11,9 @@ import {
 const router = express.Router();
 
 router
-  .post("/create", validateDto(updateUserDto), createUser)
-  .patch("/update", validateDto(updateUserDto), updateUser)
-  .delete("/delete", removeUser)
+  .post("/create", validateDto(createUserDto), createUser)
+  .patch("/update/:userId", validateDto(updateUserDto), updateUser)
+  .delete("/delete/:userId", removeUser)
   .get("/all/:role", getAllUsersByRole);
 
 module.exports = router;

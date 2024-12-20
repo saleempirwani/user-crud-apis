@@ -12,7 +12,7 @@ export const createUser = async (
   res: express.Response
 ) => {
   try {
-    const data = new User(req.body).save();
+    const data = await new User(req.body).save();
     res.status(STATUS.created).send({ data: data, message: SUCCESS.created });
   } catch (error: any | unknown) {
     errorLogs("createUser", error);
@@ -78,7 +78,8 @@ export const getAllUsersByRole = async (
   res: express.Response
 ) => {
   try {
-    const { role, search } = req.query;
+    const { search } = req.query;
+    const { role } = req.params;
 
     if (!Object.values(Role).includes(role as Role))
       return res.status(STATUS.badRequest).send({
