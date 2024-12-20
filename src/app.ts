@@ -47,5 +47,3 @@ app.use((_, res: Response) => {
 server.listen(PORT, () =>
   console.log(`🚀 Sever is live on: http://localhost:${PORT}/`)
 );
-
-//
