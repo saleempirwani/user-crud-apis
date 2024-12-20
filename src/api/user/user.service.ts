@@ -4,6 +4,7 @@ import { STATUS } from "../../messages/status-codes";
 import { SUCCESS } from "../../messages/success";
 import { errorLogs } from "../../utils/error";
 import { paginate } from "../../utils/pagination";
+import { CreateUserDtoType } from "./user.dto";
 import { Role } from "./user.interface";
 import { User } from "./user.model";
 
@@ -12,11 +13,22 @@ export const createUser = async (
   res: express.Response
 ) => {
   try {
+    const { username, email } = req.body as CreateUserDtoType;
+
+    const user = await User.findOne({ $or: [{ email }, { username }] });
+
+    if (user)
+      return res
+        .status(STATUS.badRequest)
+        .send({ message: "Email or username name is already exist." });
+
     const data = await new User(req.body).save();
-    res.status(STATUS.created).send({ data: data, message: SUCCESS.created });
+    return res
+      .status(STATUS.created)
+      .send({ data: data, message: SUCCESS.created });
   } catch (error: any | unknown) {
     errorLogs("createUser", error);
-    res
+    return res
       .status(STATUS.server)
       .send({ error: error.message, message: ERRORS.server_error });
   }
