@@ -1,0 +1,16 @@
+export const CMS_PROP_SELECT = [
+  "_id",
+  "title",
+  "bathrooms",
+  "bedrooms",
+  "propertyFor",
+  "price",
+  "propertyCategory",
+  "photos",
+  "propertyFor",
+  "listingStatus",
+  "area",
+  "createdAt",
+  "address",
+  "slug",
+].join(" ");
