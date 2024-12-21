@@ -85,6 +85,29 @@ export const removeUser = async (
   }
 };
 
+export const getUserById = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const userId = req.params?.userId;
+    const user = await User.findById(userId);
+
+    if (!user)
+      return res.status(STATUS.notFound).send({ message: ERRORS.notFound });
+
+    return res.status(STATUS.success).send({
+      data: user,
+      message: SUCCESS.fetched,
+    });
+  } catch (error: any | unknown) {
+    errorLogs("getUserById", error);
+    return res
+      .status(STATUS.server)
+      .send({ error: error.message, message: ERRORS.server_error });
+  }
+};
+
 export const getAllUsersByRole = async (
   req: express.Request,
   res: express.Response

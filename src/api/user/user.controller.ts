@@ -4,6 +4,7 @@ import { createUserDto, updateUserDto } from "./user.dto";
 import {
   createUser,
   getAllUsersByRole,
+  getUserById,
   removeUser,
   updateUser,
 } from "./user.service";
@@ -14,6 +15,7 @@ router
   .post("/create", validateDto(createUserDto), createUser)
   .patch("/update/:userId", validateDto(updateUserDto), updateUser)
   .delete("/delete/:userId", removeUser)
-  .get("/all/:role", getAllUsersByRole);
+  .get("/all/:role", getAllUsersByRole)
+  .get("/details/:userId", getUserById);
 
 module.exports = router;
