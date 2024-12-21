@@ -1,5 +1,5 @@
 // 1. Create User (POST)
-fetch("http://localhost:8080/api/v1/user/create", {
+fetch("http://66.179.208.43:8080/api/v1/user/create", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
@@ -18,7 +18,7 @@ fetch("http://localhost:8080/api/v1/user/create", {
   .catch((error) => console.error("Error:", error));
 
 //   2. Update User (PATCH)
-fetch("http://localhost:8080/api/v1/user/update/676559390f61f32ea2a45094", {
+fetch("http://66.179.208.43:8080/api/v1/user/update/676559390f61f32ea2a45094", {
   method: "PATCH",
   headers: {
     "Content-Type": "application/json",
@@ -32,7 +32,7 @@ fetch("http://localhost:8080/api/v1/user/update/676559390f61f32ea2a45094", {
   .catch((error) => console.error("Error:", error));
 
 //   3. Delete User (DELETE)
-fetch("http://localhost:8080/api/v1/user/delete/676559390f61f32ea2a45094", {
+fetch("http://66.179.208.43:8080/api/v1/user/delete/676559390f61f32ea2a45094", {
   method: "DELETE",
 })
   .then((response) => {
@@ -45,7 +45,7 @@ fetch("http://localhost:8080/api/v1/user/delete/676559390f61f32ea2a45094", {
   .catch((error) => console.error("Error:", error));
 
 // 4. Get All Users with Role (GET)
-fetch("http://localhost:8080/api/v1/user/all/business", {
+fetch("http://66.179.208.43:8080/api/v1/user/all/business", {
   method: "GET",
 })
   .then((response) => response.json())
