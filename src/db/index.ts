@@ -11,14 +11,11 @@ const connectToDB = async () => {
   }
 
   try {
-    await mongoose.connect(
-      "mongodb+srv://saleem_dev:FECBSnhiAADv6y50@clusterforlearning.hqjxsri.mongodb.net/?retryWrites=true&w=majority",
-      {
-        dbName: "user-crud-api",
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      } as ConnectOptions
-    );
+    await mongoose.connect("mongodb://localhost:27017", {
+      dbName: "user-crud-api",
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    } as ConnectOptions);
 
     isConnected = true;
 
