@@ -1,5 +1,4 @@
 import mongoose, { ConnectOptions } from "mongoose";
-import { DB_NAME, MONGODB_URI } from "../app-constants/env-variables";
 
 let isConnected = false;
 
@@ -12,11 +11,14 @@ const connectToDB = async () => {
   }
 
   try {
-    await mongoose.connect(MONGODB_URI, {
-      dbName: DB_NAME,
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    } as ConnectOptions);
+    await mongoose.connect(
+      "mongodb+srv://saleem_dev:FECBSnhiAADv6y50@clusterforlearning.hqjxsri.mongodb.net/?retryWrites=true&w=majority",
+      {
+        dbName: "user-crud-api",
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      } as ConnectOptions
+    );
 
     isConnected = true;
 

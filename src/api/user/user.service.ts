@@ -5,7 +5,6 @@ import { SUCCESS } from "../../messages/success";
 import { errorLogs } from "../../utils/error";
 import { paginate } from "../../utils/pagination";
 import { CreateUserDtoType } from "./user.dto";
-import { Role } from "./user.interface";
 import { User } from "./user.model";
 
 export const createUser = async (
@@ -20,7 +19,7 @@ export const createUser = async (
     if (user)
       return res
         .status(STATUS.badRequest)
-        .send({ message: "Email or username name is already exist." });
+        .send({ message: "Email or username is already exist." });
 
     const data = await new User(req.body).save();
     return res
@@ -108,25 +107,33 @@ export const getUserById = async (
   }
 };
 
-export const getAllUsersByRole = async (
+export const getAllUsers = async (
   req: express.Request,
   res: express.Response
 ) => {
   try {
-    const { search } = req.query;
-    const { role } = req.params;
-
-    if (!Object.values(Role).includes(role as Role))
-      return res.status(STATUS.badRequest).send({
-        message: "Invalid role",
-      });
+    const { search, email, role, username } = req.query;
 
     const data = await paginate({
       pagination: req.query,
       filter: {
-        role,
+        ...(email && {
+          email,
+        }),
+
+        ...(username && {
+          username,
+        }),
+
+        ...(role && {
+          role,
+        }),
+
         ...(search && {
-          $or: [{ fullName: { $regex: search, $options: "i" } }],
+          $or: [
+            { firstName: { $regex: search, $options: "i" } },
+            { lastName: { $regex: search, $options: "i" } },
+          ],
         }),
       },
       model: User,
