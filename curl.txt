@@ -1,3 +1,7 @@
+
+Create User
+*****************
+
 curl -X POST http://66.179.208.43:8080/api/v1/user/create \
 -H "Content-Type: application/json" \
 -d '{
@@ -9,7 +13,8 @@ curl -X POST http://66.179.208.43:8080/api/v1/user/create \
   "role": "patron"
 }'
 
-
+Update User By Id
+*****************
 
 curl -X PATCH http://66.179.208.43:8080/api/v1/user/update/6766e66d7c0a8cd4413fe2ec \
 -H "Content-Type: application/json" \
@@ -18,9 +23,29 @@ curl -X PATCH http://66.179.208.43:8080/api/v1/user/update/6766e66d7c0a8cd4413fe
 }'
 
 
+Delete User By Id
+*****************
 curl -X DELETE http://66.179.208.43:8080/api/v1/user/delete/6766e66d7c0a8cd4413fe2ec
 
 
-curl -X GET http://66.179.208.43:8080/api/v1/user/all/business
-
+Get user details
+****************
 curl -X GET http://66.179.208.43:8080/api/v1/user/details/6766e66d7c0a8cd4413fe2ec
+
+
+Get all Users By ROLE:
+**********************
+
+curl -X GET http://66.179.208.43:8080/api/v1/user/all?page=1&limit=100&role=business
+
+
+Get all Users By USERNAME:
+*************************
+
+curl -X GET http://66.179.208.43:8080/api/v1/user/all?page=1&limit=100&username=elladavis05
+
+
+Get all Users By EMAIL:
+***********************
+
+curl -X GET http://66.179.208.43:8080/api/v1/user/all?page=1&limit=100&email=johndenis23@gmail.com
