@@ -8,14 +8,15 @@ import {
   removeUser,
   updateUser,
 } from "./user.service";
+import { userAuth } from "../../middleware/validator/user-auth";
 
 const router = express.Router();
 
 router
-  .post("/create", validateDto(createUserDto), createUser)
-  .patch("/update/:userId", validateDto(updateUserDto), updateUser)
-  .delete("/delete/:userId", removeUser)
-  .get("/all/", getAllUsers)
-  .get("/details/:userId", getUserById);
+  .post("/create", userAuth, validateDto(createUserDto), createUser)
+  .patch("/update/:userId", userAuth, validateDto(updateUserDto), updateUser)
+  .delete("/delete/:userId", userAuth, removeUser)
+  .get("/all/", userAuth, getAllUsers)
+  .get("/details/:userId", userAuth, getUserById);
 
 module.exports = router;
