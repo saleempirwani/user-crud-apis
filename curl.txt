@@ -41,7 +41,7 @@ curl -X GET http://66.179.208.43/api/v1/user/details/6766e66d7c0a8cd4413fe2ec
 Get all Users:
 *************
 
-curl -X GET http://66.179.208.43/api/v1/user/details/6766e66d7c0a8cd4413fe2ec \
+curl -X GET http://66.179.208.43/api/v1/user/all \
 -H "Authorization: a1B2c3D4e5F6g7H8i9J0kLmNoPqRsTu"
 
 
