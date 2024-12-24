@@ -14,9 +14,9 @@ const router = express.Router();
 
 router
   .post("/create", userAuth, validateDto(createUserDto), createUser)
-  .patch("/update/:userId", userAuth, validateDto(updateUserDto), updateUser)
-  .delete("/delete/:userId", userAuth, removeUser)
   .get("/all/", userAuth, getAllUsers)
-  .get("/details/:userId", userAuth, getUserById);
+  .patch("/update/:user_id", userAuth, validateDto(updateUserDto), updateUser)
+  .delete("/delete/:user_id", userAuth, removeUser)
+  .get("/details/:user_id", userAuth, getUserById);
 
 module.exports = router;

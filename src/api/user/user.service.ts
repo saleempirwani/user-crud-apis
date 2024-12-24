@@ -38,7 +38,7 @@ export const updateUser = async (
   res: express.Response
 ) => {
   try {
-    const user = await User.findById(req.params?.userId);
+    const user = await User.findById(req.params?.user_id);
     if (!user)
       return res.status(STATUS.notFound).send({ message: ERRORS.notFound });
 
@@ -65,17 +65,17 @@ export const removeUser = async (
   res: express.Response
 ) => {
   try {
-    const userId = req.params?.userId;
-    const user = await User.findById(userId);
+    const user_id = req.params?.user_id;
+    const user = await User.findById(user_id);
 
     if (!user)
       return res.status(STATUS.notFound).send({ message: ERRORS.notFound });
 
-    await User.findByIdAndDelete(userId);
+    await User.findByIdAndDelete(user_id);
 
     return res
       .status(STATUS.success)
-      .send({ data: { _id: userId }, message: SUCCESS.deleted });
+      .send({ data: { _id: user_id }, message: SUCCESS.deleted });
   } catch (error: any | unknown) {
     errorLogs("remove_user", error);
     return res
@@ -89,8 +89,8 @@ export const getUserById = async (
   res: express.Response
 ) => {
   try {
-    const userId = req.params?.userId;
-    const user = await User.findById(userId);
+    const user_id = req.params?.user_id;
+    const user = await User.findById(user_id);
 
     if (!user)
       return res.status(STATUS.notFound).send({ message: ERRORS.notFound });
