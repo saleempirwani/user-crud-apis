@@ -38,7 +38,14 @@ export const updateUser = async (
   res: express.Response
 ) => {
   try {
-    const user = await User.findById(req.params?.user_id);
+    const { user_id } = req.query;
+
+    if (!user_id)
+      return res
+        .status(STATUS.badRequest)
+        .send({ message: "Please provide user_id" });
+
+    const user = await User.findById(user_id);
     if (!user)
       return res.status(STATUS.notFound).send({ message: ERRORS.notFound });
 
@@ -65,7 +72,13 @@ export const removeUser = async (
   res: express.Response
 ) => {
   try {
-    const user_id = req.params?.user_id;
+    const { user_id } = req.query;
+
+    if (!user_id)
+      return res
+        .status(STATUS.badRequest)
+        .send({ message: "Please provide user_id" });
+
     const user = await User.findById(user_id);
 
     if (!user)
@@ -89,7 +102,13 @@ export const getUserById = async (
   res: express.Response
 ) => {
   try {
-    const user_id = req.params?.user_id;
+    const { user_id } = req.query;
+
+    if (!user_id)
+      return res
+        .status(STATUS.badRequest)
+        .send({ message: "Please provide user_id" });
+
     const user = await User.findById(user_id);
 
     if (!user)
@@ -112,7 +131,7 @@ export const getAllUsers = async (
   res: express.Response
 ) => {
   try {
-    const { search, email, role, username } = req.query;
+    const { search, email, role, username, user_id } = req.query;
 
     const data = await paginate({
       pagination: req.query,
@@ -127,6 +146,10 @@ export const getAllUsers = async (
 
         ...(role && {
           role,
+        }),
+
+        ...(user_id && {
+          _id: user_id,
         }),
 
         ...(search && {
