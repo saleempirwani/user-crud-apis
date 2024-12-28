@@ -6,6 +6,7 @@ curl -X POST http://66.179.208.43/api/v1/user/create \
 -H "Content-Type: application/json" \
 -H "Authorization: a1B2c3D4e5F6g7H8i9J0kLmNoPqRsTu" \
 -d '{
+  user_id: 1
   "firstName": "John",
   "lastName": "Denis",
   "username": "johndenis23",
