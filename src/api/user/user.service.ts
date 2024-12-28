@@ -12,7 +12,14 @@ export const createUser = async (
   res: express.Response
 ) => {
   try {
-    const { username, email } = req.body as CreateUserDtoType;
+    const { username, email, user_id } = req.body as CreateUserDtoType;
+
+    const userIdExist = await User.findOne({ user_id });
+
+    if (userIdExist)
+      return res
+        .status(STATUS.badRequest)
+        .send({ message: "user_id is already exist." });
 
     const user = await User.findOne({ $or: [{ email }, { username }] });
 
@@ -45,7 +52,8 @@ export const updateUser = async (
         .status(STATUS.badRequest)
         .send({ message: "Please provide user_id" });
 
-    const user = await User.findById(user_id);
+    const user = await User.findOne({ user_id });
+
     if (!user)
       return res.status(STATUS.notFound).send({ message: ERRORS.notFound });
 
@@ -79,12 +87,12 @@ export const removeUser = async (
         .status(STATUS.badRequest)
         .send({ message: "Please provide user_id" });
 
-    const user = await User.findById(user_id);
+    const user = await User.findOne({ user_id });
 
     if (!user)
       return res.status(STATUS.notFound).send({ message: ERRORS.notFound });
 
-    await User.findByIdAndDelete(user_id);
+    await User.findByIdAndDelete(user._id);
 
     return res
       .status(STATUS.success)
@@ -109,7 +117,7 @@ export const getUserById = async (
         .status(STATUS.badRequest)
         .send({ message: "Please provide user_id" });
 
-    const user = await User.findById(user_id);
+    const user = await User.findOne({ user_id });
 
     if (!user)
       return res.status(STATUS.notFound).send({ message: ERRORS.notFound });
@@ -149,7 +157,7 @@ export const getAllUsers = async (
         }),
 
         ...(user_id && {
-          _id: user_id,
+          user_id: user_id,
         }),
 
         ...(search && {

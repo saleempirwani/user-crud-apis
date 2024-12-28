@@ -81,4 +81,6 @@ export type ValidationError =
   | "must be a valid"
   | "min. limit is 2"
   | "only contains alphanumeric characters"
-  | "max. limit is 20";
+  | "max. limit is 20"
+  | "must be an integer"
+  | "must be between 1 and 11 digits";

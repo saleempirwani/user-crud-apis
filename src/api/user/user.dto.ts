@@ -5,6 +5,16 @@ import { Role } from "./user.interface";
 
 // User Create Dto
 export const createUserDto = object({
+  user_id: z
+    .number({
+      required_error: zodErrorHandle("User ID", "is required"),
+      invalid_type_error: zodErrorHandle("User ID", "must be a number"),
+    })
+    .int(zodErrorHandle("User ID", "must be an integer"))
+    .refine((value) => value >= 1 && value <= 99999999999, {
+      message: zodErrorHandle("User ID", "must be between 1 and 11 digits"),
+    }),
+
   firstName: z
     .string({
       required_error: zodErrorHandle("First Name", "is required"),
@@ -47,6 +57,7 @@ export const createUserDto = object({
       invalid_type_error: zodErrorHandle("Email", "must be a string"),
     })
     .email(zodErrorHandle("Email", "format is invalid")),
+
   state: z
     .string({
       required_error: zodErrorHandle("State", "is required"),
@@ -55,6 +66,7 @@ export const createUserDto = object({
     .refine((value) => REGEX.alphabetsSpace.test(value), {
       message: zodErrorHandle("State", "must contain only letters and spaces"),
     }),
+
   role: z.nativeEnum(Role, {
     required_error: zodErrorHandle("Role", "is required"),
     invalid_type_error: zodErrorHandle("Role", "is invalid"),
