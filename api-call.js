@@ -6,7 +6,7 @@ fetch("http://66.179.208.43/api/v1/user/create", {
     Authorization: "a1B2c3D4e5F6g7H8i9J0kLmNoPqRsTu",
   },
   body: JSON.stringify({
-    user_id: 1,
+    user_id: 3,
     firstName: "John",
     lastName: "Denis",
     username: "johndenis23fff",
@@ -20,47 +20,38 @@ fetch("http://66.179.208.43/api/v1/user/create", {
   .catch((error) => console.error("Error:", error));
 
 //  Update User (PATCH)
-fetch(
-  "http://66.179.208.43/api/v1/user/update?user_id=676e7ea38c2e0cb9f370f909",
-  {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "a1B2c3D4e5F6g7H8i9J0kLmNoPqRsTu",
-    },
-    body: JSON.stringify({
-      firstName: "John",
-    }),
-  }
-)
+fetch("http://66.179.208.43/api/v1/user/update?user_id=2", {
+  method: "PATCH",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: "a1B2c3D4e5F6g7H8i9J0kLmNoPqRsTu",
+  },
+  body: JSON.stringify({
+    firstName: "John",
+  }),
+})
   .then((response) => response.json())
   .then((data) => console.log(data))
   .catch((error) => console.error("Error:", error));
 
 //   Delete User (DELETE)
-fetch(
-  "http://66.179.208.43/api/v1/user/delete?user_id=676e7ea38c2e0cb9f370f909",
-  {
-    method: "DELETE",
-    headers: {
-      Authorization: "a1B2c3D4e5F6g7H8i9J0kLmNoPqRsTu",
-    },
-  }
-)
+fetch("http://66.179.208.43/api/v1/user/delete?user_id=2", {
+  method: "DELETE",
+  headers: {
+    Authorization: "a1B2c3D4e5F6g7H8i9J0kLmNoPqRsTu",
+  },
+})
   .then((response) => response.json())
   .then((data) => console.log(data))
   .catch((error) => console.error("Error:", error));
 
 // Get User Details
-fetch(
-  "http://66.179.208.43/api/v1/user/details?user_id=676e7ea38c2e0cb9f370f909",
-  {
-    method: "GET",
-    headers: {
-      Authorization: "a1B2c3D4e5F6g7H8i9J0kLmNoPqRsTu",
-    },
-  }
-)
+fetch("http://66.179.208.43/api/v1/user/details?user_id=2", {
+  method: "GET",
+  headers: {
+    Authorization: "a1B2c3D4e5F6g7H8i9J0kLmNoPqRsTu",
+  },
+})
   .then((response) => response.json())
   .then((data) => console.log(data))
   .catch((error) => console.error("Error:", error));
@@ -77,7 +68,7 @@ fetch("http://66.179.208.43/api/v1/user/all", {
   .catch((error) => console.error("Error:", error));
 
 // Get One Users
-fetch("http://66.179.208.43/api/v1/user/all?user_id=676e7ea38c2e0cb9f370f909", {
+fetch("http://66.179.208.43/api/v1/user/all?user_id=2", {
   method: "GET",
   headers: {
     Authorization: "a1B2c3D4e5F6g7H8i9J0kLmNoPqRsTu",
@@ -119,3 +110,6 @@ fetch("http://66.179.208.43/api/v1/user/all?email=johndenis23@gmail.com", {
   .then((response) => response.json())
   .then((data) => console.log(data))
   .catch((error) => console.error("Error:", error));
+
+// 66.179.208.43
+// G4UV6ylw

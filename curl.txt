@@ -6,19 +6,20 @@ curl -X POST http://66.179.208.43/api/v1/user/create \
 -H "Content-Type: application/json" \
 -H "Authorization: a1B2c3D4e5F6g7H8i9J0kLmNoPqRsTu" \
 -d '{
-  user_id: 1
+  "user_id": 3,
   "firstName": "John",
   "lastName": "Denis",
-  "username": "johndenis23",
-  "email": "johndenis23@gmail.com",
+  "username": "qwerty",
+  "email": "qwerty@gmail.com",
   "state": "Arizona",
   "role": "patron"
 }'
 
+
 Update User By Id
 *****************
 
-curl -X PATCH http://66.179.208.43/api/v1/user/update?user_id=6766e66d7c0a8cd4413fe2ec \
+curl -X PATCH http://66.179.208.43/api/v1/user/update?user_id=1 \
 -H "Content-Type: application/json" \
 -H "Authorization: a1B2c3D4e5F6g7H8i9J0kLmNoPqRsTu" \
 -d '{
@@ -29,13 +30,13 @@ curl -X PATCH http://66.179.208.43/api/v1/user/update?user_id=6766e66d7c0a8cd441
 
 Delete User By Id
 *****************
-curl -X DELETE http://66.179.208.43/api/v1/user/delete?user_id=67670154fb724d2739455cbf \
+curl -X DELETE http://66.179.208.43/api/v1/user/delete?user_id=1 \
 -H "Authorization: a1B2c3D4e5F6g7H8i9J0kLmNoPqRsTu"
 
 
 Get user details
 ****************
-curl -X GET http://66.179.208.43/api/v1/user/details?user_id=67680dd4643013a2c7c3650f \
+curl -X GET http://66.179.208.43/api/v1/user/details?user_id=1 \
 -H "Authorization: a1B2c3D4e5F6g7H8i9J0kLmNoPqRsTu"
 
 
@@ -49,7 +50,7 @@ curl -X GET http://66.179.208.43/api/v1/user/all \
 Get One User:
 *************
 
-curl -X GET http://66.179.208.43/api/v1/user/all?user_id=6766e66d7c0a8cd4413fe2ec \
+curl -X GET http://66.179.208.43/api/v1/user/all?user_id=1 \
 -H "Authorization: a1B2c3D4e5F6g7H8i9J0kLmNoPqRsTu"
 
 
